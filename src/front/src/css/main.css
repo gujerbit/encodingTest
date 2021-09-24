@@ -1,0 +1,56 @@
+main {
+    width: 50%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+.input-field, form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    height: 50%;
+}
+
+.input-field, .view-field {
+    border: 2px solid #000000;
+    border-radius: 30px;
+    margin: 1%;
+}
+
+.input {
+    width: 100%;
+    outline: 0;
+    margin: 1%;
+    font-size: 1.2rem;
+}
+
+.submit {
+    width: 20%;
+}
+
+.input-field button {
+    width: 15%;
+    margin: 0.5%;
+}
+
+input, .input-field button {
+    height: 50%;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+input:hover, .input-field button:hover {
+    background-color: #444444;
+    transition: all 0.5s;
+}
