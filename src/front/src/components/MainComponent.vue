@@ -2,14 +2,8 @@
   <main>
     <div class="input-field">
       <section>
-        <form action="/encoding" method="GET">
-          <input class="input" type="text" v-model="inputStr.str">
-          <input class="submit" type="submit" value="GET">
-        </form>
-        <form action="/encoding" method="POST">
-          <input class="input" type="text" v-model="inputStr.str">
-          <input class="submit" type="submit" value="POST">
-        </form>
+        <input class="input" type="text" v-model="inputStr.str">
+        <button @click="sendData()">전송</button>
       </section>
       <button class="random" @click="createRandomStr()">랜덤 생성</button>
     </div>
@@ -39,6 +33,7 @@ import { ref } from 'vue'; //동적 변수 할당
 import axios from 'axios';
 import { useStore } from 'vuex';
 import { createRandomCode } from '../js/createRandomCode';
+import { sendGet, sendPost, encodingGet, encodingPost, base64Get, base64Post } from '../js/send';
 import contentComponent from './ContentComponent.vue';
 
 export default {
@@ -53,7 +48,16 @@ export default {
         inputStr.value.str = createRandomCode();
       };
 
-      return { createRandomStr, inputStr, store }; //return 해야 쓸 수 있음
+      const sendData = () => {
+        sendGet(inputStr.value.str, store);
+        sendPost(inputStr.value.str, store);
+        encodingGet(inputStr.value.str, store);
+        encodingPost(inputStr.value.str, store);
+        base64Get(inputStr.value.str, store);
+        base64Post(inputStr.value.str, store);
+      };
+
+      return { createRandomStr, sendData, inputStr, store }; //return 해야 쓸 수 있음
     },
     components: {
       contentComponent
